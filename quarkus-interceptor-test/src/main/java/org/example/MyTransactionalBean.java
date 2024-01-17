@@ -12,6 +12,8 @@ public class MyTransactionalBean {
 
     @Inject
     TransactionManager tm;
+    @Inject
+    MyUnsafeTransactionalBean myUnsafeTransactionalBean;
 
     @Transactional
     public void test() throws SystemException {
@@ -36,4 +38,23 @@ public class MyTransactionalBean {
             throw new AssertionError("Tranasction");
         }
     }
+
+    public void test4() {
+        try {
+            myUnsafeTransactionalBean.test();
+            throw new AssertionError("nothing thrown");
+        } catch (TransactionalSafeException e) {
+        }
+        try {
+            myUnsafeTransactionalBean.test2();
+            throw new AssertionError("nothing thrown");
+        } catch (TransactionalSafeException e) {
+        }
+        try {
+            myUnsafeTransactionalBean.test3();
+            throw new AssertionError("nothing thrown");
+        } catch (TransactionalSafeException e) {
+        }
+    }
+
 }

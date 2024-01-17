@@ -33,7 +33,7 @@ public class GreetingResource {
         } catch (SystemException e) {
             throw new RuntimeException(e);
         }
-
+        myTransactionalBean.test4();
 
         try {
             myBean.test();

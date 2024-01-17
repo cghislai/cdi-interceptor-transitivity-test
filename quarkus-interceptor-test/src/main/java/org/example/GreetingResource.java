@@ -28,6 +28,12 @@ public class GreetingResource {
         } catch (SystemException e) {
             throw new RuntimeException(e);
         }
+        try {
+            myTransactionalBean.test3();
+        } catch (SystemException e) {
+            throw new RuntimeException(e);
+        }
+
 
         try {
             myBean.test();

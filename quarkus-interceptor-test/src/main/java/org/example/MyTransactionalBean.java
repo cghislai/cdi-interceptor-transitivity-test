@@ -28,4 +28,12 @@ public class MyTransactionalBean {
             throw new AssertionError("No tranasction");
         }
     }
+
+
+    public void test3() throws SystemException {
+        Transaction transaction = tm.getTransaction();
+        if (transaction != null) {
+            throw new AssertionError("Tranasction");
+        }
+    }
 }
